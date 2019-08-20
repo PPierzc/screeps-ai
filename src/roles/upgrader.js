@@ -1,5 +1,6 @@
 /* global Game, ERR_NOT_IN_RANGE, RESOURCE_ENERGY, MOVE, WORK, CARRY */
-const SpawnQueue = require('queue.spawn')
+
+const SpawnQueue = require('../queues/spawn')
 
 const upgrade = (creep) => {
   const controller = creep.room.controller
@@ -9,13 +10,13 @@ const upgrade = (creep) => {
   }
 }
 
-const Updater = {
-  spawn: function (numberOfUpdaters) {
+module.exports = {
+  spawn: function (numberOfUpgraders) {
     SpawnQueue.add({
-      key: `updater-${numberOfUpdaters}`,
-      name: `updater-${numberOfUpdaters}`,
+      key: `upgrader-${numberOfUpgraders}`,
+      name: `upgrader-${numberOfUpgraders}`,
       body: [MOVE, WORK, CARRY],
-      memory: { role: 'updater' },
+      memory: { role: 'upgrader' },
       priority: 2
     })
   },
@@ -36,5 +37,3 @@ const Updater = {
     }
   }
 }
-
-module.exports = Updater

@@ -1,18 +1,18 @@
-const HarvesterManager = require('manager.harvester')
-const UpdaterManager = require('manager.updater')
-const DemandManager = require('manager.demand')
-const SpawnQueue = require('queue.spawn')
+const HarvesterManager = require('./managers/harvester')
+const UpgraderManager = require('./managers/upgrader')
+const DemandManager = require('./managers/demand')
+const SpawnQueue = require('./queues/spawn')
 
 module.exports.loop = function () {
   const {
     harvesters,
-    updaters
+    upgraders
   } = DemandManager()
 
-  console.log('demand', harvesters, updaters)
+  console.log('demand', harvesters, upgraders)
 
   SpawnQueue.tick()
 
   HarvesterManager.tick(harvesters)
-  UpdaterManager.tick(updaters)
+  UpgraderManager.tick(upgraders)
 }

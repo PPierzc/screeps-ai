@@ -1,8 +1,8 @@
-/* global Game */
-/* global FIND_SOURCES, ERR_NOT_IN_RANGE, RESOURCE_ENERGY, MOVE, WORK, CARRY */
-const SpawnQueue = require('queue.spawn')
+/* global Game, FIND_SOURCES, ERR_NOT_IN_RANGE, RESOURCE_ENERGY, MOVE, WORK, CARRY */
 
-const Harvester = {
+const SpawnQueue = require('../queues/spawn')
+
+module.exports = {
   spawn: function (numberOfHarvesters) {
     SpawnQueue.add({
       key: `harvester-${numberOfHarvesters}`,
@@ -25,5 +25,3 @@ const Harvester = {
     }
   }
 }
-
-module.exports = Harvester
