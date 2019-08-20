@@ -1,19 +1,12 @@
-/*
- * Module code goes here. Use 'module.exports' to export things:
- * module.exports.thing = 'a thing';
- *
- * You can import it from another modules like this:
- * var mod = require('queue.spawn');
- * mod.thing == 'a thing'; // true
- */
+/* global Game */
 
-Game.spawns['Spawn1'].memory.queue = []
+Game.spawns.Spawn1.memory.queue = []
 
 module.exports = {
   add: (job) => {
     const {
       queue
-    } = Game.spawns['Spawn1'].memory
+    } = Game.spawns.Spawn1.memory
 
     const duplicateJobs = queue.filter(_job => _job.key === job.key)
 
@@ -22,7 +15,7 @@ module.exports = {
     }
   },
   tick: () => {
-    const spawn = Game.spawns['Spawn1']
+    const spawn = Game.spawns.Spawn1
 
     if (!spawn.spawning) {
       if (spawn.memory.processing) {
@@ -38,4 +31,4 @@ module.exports = {
       }
     }
   }
-};
+}

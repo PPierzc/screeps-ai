@@ -1,3 +1,5 @@
+/* global Game */
+
 const HarvesterRole = require('role.harvester')
 
 module.exports = {
@@ -14,4 +16,4 @@ module.exports = {
       HarvesterRole.tick(harvester)
     })
   }
-};
+}

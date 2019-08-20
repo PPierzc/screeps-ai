@@ -1,3 +1,4 @@
+/* global Game */
 module.exports = () => {
   const { creeps } = Game
 
@@ -11,4 +12,4 @@ module.exports = () => {
     harvesters,
     updaters
   }
-};
+}
