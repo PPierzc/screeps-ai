@@ -1,6 +1,6 @@
 /* global Game */
 
-const HarvesterRole = require('../roles/harvester')
+const HarvesterRole = require('../../roles/harvester')
 
 module.exports = {
   tick: function (demand) {

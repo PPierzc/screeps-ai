@@ -1,6 +1,6 @@
 /* global Game */
 
-const UpgraderRole = require('../roles/upgrader')
+const UpgraderRole = require('../../roles/upgrader')
 
 module.exports = {
   tick: function (demand) {
