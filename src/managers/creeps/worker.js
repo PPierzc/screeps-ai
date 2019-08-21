@@ -6,6 +6,7 @@ module.exports = {
 
     const workers = Object.values(creeps).filter(creep => creep.memory.role === 'worker')
     const miners = Object.values(creeps).filter(creep => creep.memory.role === 'miner')
+    const haulers = Object.values(creeps).filter(creep => creep.memory.role === 'hauler')
 
     if (workers.length < demand) {
       WorkerRole.spawn(workers.length)
@@ -13,7 +14,11 @@ module.exports = {
 
     workers.forEach(worker => {
       if (miners.length) {
-        worker.memory.task = 'haul'
+        if (Object.values(Game.constructionSites).length && haulers.length) {
+          worker.memory.task = 'build'
+        } else {
+          worker.memory.task = 'haul'
+        }
       } else {
         worker.memory.task = 'mine'
       }

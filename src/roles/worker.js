@@ -32,17 +32,45 @@ const transferJob = (creep) => {
   }
 }
 
+const withdrawJob = (creep) => {
+  const spawn = Game.spawns.Spawn1
+  const withdraw = creep.withdraw(spawn, RESOURCE_ENERGY)
+
+  if (withdraw === ERR_NOT_IN_RANGE) {
+    creep.moveTo(spawn)
+  }
+}
+
+const buildJob = (creep) => {
+  const target = creep.room.find(FIND_MY_CONSTRUCTION_SITES)
+
+  const transferRes = creep.transfer(target, RESOURCE_ENERGY)
+
+  if (transferRes === ERR_NOT_IN_RANGE) {
+    creep.moveTo(target)
+  }
+}
+
 const tick = (creep) => {
   if (creep.carry.energy < creep.carryCapacity) {
-    if (creep.memory.task === 'mine') {
-      return mineJob(creep)
-    }
-    if (creep.memory.task === 'haul') {
-      return pickupJob(creep)
+    switch (creep.memory.task) {
+      case 'haul':
+        return pickupJob(creep)
+      case 'mine':
+        return mineJob(creep)
+      case 'build':
+        return withdrawJob(creep)
+      default:
+        return null
     }
   }
 
-  return transferJob(creep)
+  switch (creep.memory.task) {
+    case 'build':
+      return buildJob(creep)
+    default:
+      return transferJob(creep)
+  }
 }
 
 const spawn = (numberOfWorkers) => {

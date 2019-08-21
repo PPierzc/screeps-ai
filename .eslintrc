@@ -10,6 +10,7 @@
     "CARRY": "writable",
     "FIND_DROPPED_RESOURCES": "writable",
     "STRUCTURE_CONTAINER": "writable",
+    "FIND_MY_CONSTRUCTION_SITES": "writable",
     "Game": "writable"
   }
 }
