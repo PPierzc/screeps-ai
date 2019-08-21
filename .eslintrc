@@ -9,6 +9,7 @@
     "WORK": "writable",
     "CARRY": "writable",
     "FIND_DROPPED_RESOURCES": "writable",
+    "STRUCTURE_CONTAINER": "writable",
     "Game": "writable"
   }
 }
