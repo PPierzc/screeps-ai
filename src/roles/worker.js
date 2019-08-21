@@ -42,7 +42,8 @@ const withdrawJob = (creep) => {
 }
 
 const buildJob = (creep) => {
-  const target = creep.room.find(FIND_MY_CONSTRUCTION_SITES)
+  const constructionSites = creep.room.find(FIND_MY_CONSTRUCTION_SITES)
+  const target = constructionSites[0]
 
   const buildRes = creep.build(target)
 
