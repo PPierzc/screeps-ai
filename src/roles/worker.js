@@ -55,6 +55,14 @@ const buildJob = (creep) => {
 }
 
 const tick = (creep) => {
+  if (!creep.carry.energy) {
+    creep.memory.needRefil = true
+  }
+
+  if (creep.carry.energy === creep.carryCapacity) {
+    creep.memory.needRefil = false
+  }
+
   if (creep.carry.energy < creep.carryCapacity) {
     switch (creep.memory.task) {
       case 'haul':
@@ -62,7 +70,10 @@ const tick = (creep) => {
       case 'mine':
         return mineJob(creep)
       case 'build':
-        return withdrawJob(creep)
+        if (creep.memory.needRefil) {
+          return withdrawJob(creep)
+        }
+        return buildJob(creep)
       default:
         return null
     }
