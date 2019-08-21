@@ -1,6 +1,17 @@
 const SpawnQueue = require('../queues/spawn')
 
-const harvestJob = (creep) => {
+const pickupJob = (creep) => {
+  const resources = creep.room.find(FIND_DROPPED_RESOURCES)
+  const target = resources[0]
+
+  const pickupRes = creep.pickup(target)
+
+  if (pickupRes === ERR_NOT_IN_RANGE) {
+    creep.moveTo(target)
+  }
+}
+
+const mineJob = (creep) => {
   const sources = creep.room.find(FIND_SOURCES)
   const targetSource = sources[0]
 
@@ -23,7 +34,12 @@ const transferJob = (creep) => {
 
 const tick = (creep) => {
   if (creep.carry.energy < creep.carryCapacity) {
-    return harvestJob(creep)
+    if (creep.memory.task === 'mine') {
+      return mineJob(creep)
+    }
+    if (creep.memory.task === 'haul') {
+      return pickupJob(creep)
+    }
   }
 
   return transferJob(creep)
@@ -34,7 +50,7 @@ const spawn = (numberOfWorkers) => {
     key: `worker-${numberOfWorkers}`,
     name: `worker-${numberOfWorkers}`,
     body: [MOVE, WORK, CARRY],
-    memory: { role: 'worker' },
+    memory: { role: 'worker', task: 'mine' },
     priority: 1
   })
 }
