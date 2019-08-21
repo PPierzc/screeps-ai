@@ -10,8 +10,8 @@ module.exports = {
       HaulerRole.spawn(haulers.length)
     }
 
-    haulers.forEach(harvester => {
-      HaulerRole.tick(harvester)
+    haulers.forEach(worker => {
+      HaulerRole.tick(worker)
     })
   }
 }

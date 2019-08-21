@@ -29,12 +29,12 @@ const tick = (creep) => {
   return transferJob(creep)
 }
 
-const spawn = (numberOfHarvesters) => {
+const spawn = (numberOfWorkers) => {
   SpawnQueue.add({
-    key: `harvester-${numberOfHarvesters}`,
-    name: `harvester-${numberOfHarvesters}`,
+    key: `worker-${numberOfWorkers}`,
+    name: `worker-${numberOfWorkers}`,
     body: [MOVE, WORK, CARRY],
-    memory: { role: 'harvester' },
+    memory: { role: 'worker' },
     priority: 1
   })
 }

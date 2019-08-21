@@ -1,4 +1,4 @@
-const HarvesterManager = require('./harvester')
+const WorkerManager = require('./worker')
 const UpgraderManager = require('./upgrader')
 const MinerManager = require('./miner')
 const HaulerManager = require('./hauler')
@@ -7,7 +7,7 @@ const SpawnQueue = require('../../queues/spawn')
 
 module.exports = () => {
   const {
-    harvesters,
+    workers,
     upgraders,
     miners,
     haulers
@@ -15,7 +15,7 @@ module.exports = () => {
 
   SpawnQueue.tick()
 
-  HarvesterManager.tick(harvesters)
+  WorkerManager.tick(workers)
   UpgraderManager.tick(upgraders)
   MinerManager.tick(miners)
   HaulerManager.tick(haulers)
