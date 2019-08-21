@@ -21,7 +21,7 @@ const spawn = (numberOfMiners) => {
     name: `miner-${numberOfMiners}`,
     body: [MOVE, WORK, WORK],
     memory: { role: 'miner' },
-    priority: 1
+    priority: 2
   })
 }
 

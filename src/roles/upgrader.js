@@ -42,7 +42,7 @@ const spawn = (numberOfUpgraders) => {
     name: `upgrader-${numberOfUpgraders}`,
     body: [MOVE, WORK, CARRY],
     memory: { role: 'upgrader' },
-    priority: 2
+    priority: 3
   })
 }
 
