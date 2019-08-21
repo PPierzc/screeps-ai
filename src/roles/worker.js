@@ -47,8 +47,6 @@ const buildJob = (creep) => {
 
   const buildRes = creep.build(target)
 
-  console.log(buildRes)
-
   if (buildRes === ERR_NOT_IN_RANGE) {
     creep.moveTo(target)
   }
