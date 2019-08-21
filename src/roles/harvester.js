@@ -1,27 +1,45 @@
-/* global Game, FIND_SOURCES, ERR_NOT_IN_RANGE, RESOURCE_ENERGY, MOVE, WORK, CARRY */
-
 const SpawnQueue = require('../queues/spawn')
 
-module.exports = {
-  spawn: function (numberOfHarvesters) {
-    SpawnQueue.add({
-      key: `harvester-${numberOfHarvesters}`,
-      name: `harvester-${numberOfHarvesters}`,
-      body: [MOVE, WORK, CARRY],
-      memory: { role: 'harvester' },
-      priority: 1
-    })
-  },
-  tick: function (creep) {
-    if (creep.carry.energy < creep.carryCapacity) {
-      var sources = creep.room.find(FIND_SOURCES)
-      if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(sources[0])
-      }
-    } else {
-      if (creep.transfer(Game.spawns.Spawn1, RESOURCE_ENERGY) === ERR_NOT_IN_RANGE) {
-        creep.moveTo(Game.spawns.Spawn1)
-      }
-    }
+const harvestJob = (creep) => {
+  const sources = creep.room.find(FIND_SOURCES)
+  const targetSource = sources[0]
+
+  const harvestRes = creep.harvest(targetSource)
+
+  if (harvestRes === ERR_NOT_IN_RANGE) {
+    creep.moveTo(targetSource)
   }
+}
+
+const transferJob = (creep) => {
+  const target = Game.spawns.Spawn1
+
+  const transferRes = creep.transfer(target, RESOURCE_ENERGY)
+
+  if (transferRes === ERR_NOT_IN_RANGE) {
+    creep.moveTo(target)
+  }
+}
+
+const tick = (creep) => {
+  if (creep.carry.energy < creep.carryCapacity) {
+    return harvestJob(creep)
+  }
+
+  return transferJob(creep)
+}
+
+const spawn = (numberOfHarvesters) => {
+  SpawnQueue.add({
+    key: `harvester-${numberOfHarvesters}`,
+    name: `harvester-${numberOfHarvesters}`,
+    body: [MOVE, WORK, CARRY],
+    memory: { role: 'harvester' },
+    priority: 1
+  })
+}
+
+module.exports = {
+  spawn,
+  tick
 }

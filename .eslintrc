@@ -1,0 +1,13 @@
+{
+  "extends": "standard",
+  "globals": {
+    "Promise": "off",
+    "FIND_SOURCES": "writable",
+    "ERR_NOT_IN_RANGE": "writable",
+    "RESOURCE_ENERGY":  "writable",
+    "MOVE": "writable",
+    "WORK": "writable",
+    "CARRY": "writable",
+    "Game": "writable"
+  }
+}

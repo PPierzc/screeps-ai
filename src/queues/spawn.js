@@ -1,5 +1,3 @@
-/* global Game */
-
 Game.spawns.Spawn1.memory.queue = []
 
 module.exports = {

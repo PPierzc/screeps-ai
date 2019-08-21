@@ -1,5 +1,3 @@
-/* global Game */
-
 const UpgraderRole = require('../../roles/upgrader')
 
 module.exports = {

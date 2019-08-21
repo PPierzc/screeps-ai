@@ -1,5 +1,3 @@
-/* global Game */
-
 const HarvesterRole = require('../../roles/harvester')
 
 module.exports = {

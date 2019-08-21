@@ -1,5 +1,3 @@
-/* global Game, ERR_NOT_IN_RANGE, RESOURCE_ENERGY, MOVE, WORK, CARRY */
-
 const SpawnQueue = require('../queues/spawn')
 
 const upgrade = (creep) => {
