@@ -17,7 +17,7 @@ const withdrawJob = (creep) => {
     }
   })
 
-  if (target.energy < 50) {
+  if (target.energy < 150) {
     target = containers[0]
   }
 
