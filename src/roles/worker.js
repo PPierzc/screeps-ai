@@ -44,7 +44,9 @@ const withdrawJob = (creep) => {
 const buildJob = (creep) => {
   const target = creep.room.find(FIND_MY_CONSTRUCTION_SITES)
 
-  const buildRes = creep.build(target, RESOURCE_ENERGY)
+  const buildRes = creep.build(target)
+
+  console.log(buildRes)
 
   if (buildRes === ERR_NOT_IN_RANGE) {
     creep.moveTo(target)
