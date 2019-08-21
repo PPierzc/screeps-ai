@@ -1,8 +1,9 @@
 const SpawnQueue = require('../queues/spawn')
 
 const pickupJob = (creep) => {
-  const target = creep.room.find(FIND_DROPPED_RESOURCES)
-  console.log(target)
+  const resources = creep.room.find(FIND_DROPPED_RESOURCES)
+  const target = resources[0]
+
   const pickupRes = creep.pickup(target)
 
   if (pickupRes === ERR_NOT_IN_RANGE) {
