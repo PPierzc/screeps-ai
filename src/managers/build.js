@@ -11,6 +11,8 @@ module.exports = () => {
   const containersUnderConstruction = Object.values(constructionSites).filter(constructionSite => constructionSite.structureType === STRUCTURE_CONTAINER)
   const containers = Object.values(structures).filter(structure => structure.structureType === STRUCTURE_CONTAINER)
 
+  console.log(containers)
+
   if (!containersUnderConstruction.length && !containers.length) {
     room.createConstructionSite(spawn.pos.x, spawn.pos.y + 10, STRUCTURE_CONTAINER)
   }

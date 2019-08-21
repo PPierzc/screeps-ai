@@ -19,7 +19,7 @@ const transferJob = (creep) => {
   })
 
   let target = Game.spawns.Spawn1
-  if (containers.length) {
+  if (containers.length && target.energy > target.energyCapacity - 50) {
     target = containers[0]
   }
 
