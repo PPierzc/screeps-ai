@@ -63,6 +63,14 @@ const buildJob = (creep) => {
   }
 }
 
+const upgradeJob = (creep) => {
+  const controller = creep.room.controller
+
+  if (creep.upgradeController(controller) === ERR_NOT_IN_RANGE) {
+    creep.moveTo(controller)
+  }
+}
+
 const tick = (creep) => {
   if (!creep.carry.energy) {
     creep.memory.needRefil = true
@@ -83,6 +91,11 @@ const tick = (creep) => {
           return withdrawJob(creep)
         }
         return buildJob(creep)
+      case 'upgrade':
+        if (creep.memory.needRefil) {
+          return withdrawJob(creep)
+        }
+        return upgradeJob(creep)
       default:
         return null
     }
@@ -91,6 +104,8 @@ const tick = (creep) => {
   switch (creep.memory.task) {
     case 'build':
       return buildJob(creep)
+    case 'upgrade':
+      return upgradeJob(creep)
     default:
       return transferJob(creep)
   }

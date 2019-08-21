@@ -17,7 +17,11 @@ module.exports = {
         if (Object.values(Game.constructionSites).length && haulers.length) {
           worker.memory.task = 'build'
         } else {
-          worker.memory.task = 'haul'
+          if (haulers.length) {
+            worker.memory.task = 'upgrade'
+          } else {
+            worker.memory.task = 'haul'
+          }
         }
       } else {
         worker.memory.task = 'mine'
