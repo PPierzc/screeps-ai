@@ -21,6 +21,7 @@ const tick = (creep) => {
   if (!creep.carry.energy) {
     creep.memory.task = 'withdraw'
   }
+
   if (creep.carry.energy < creep.carryCapacity) {
     if (creep.memory.task === 'withdraw') {
       withdrawJob(creep)
