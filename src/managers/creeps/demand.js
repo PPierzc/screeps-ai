@@ -7,7 +7,7 @@ module.exports = () => {
   const workers = Object.values(creeps).length < 3 ? 1 : Object.values(creeps).length / 3
   const upgraders = Math.floor((currMiners) / 3)
   const miners = currWorkers < 1 ? 0 : 3
-  const haulers = currMiners
+  const haulers = currMiners * 2
 
   return {
     workers,
