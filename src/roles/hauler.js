@@ -14,6 +14,7 @@ const pickupJob = (creep) => {
 const transferJob = (creep) => {
   const structures = Game.structures
   const containers = Object.values(structures).filter(structure => structure.structureType === STRUCTURE_CONTAINER)
+  console.log(containers)
 
   let target = Game.spawns.Spawn1
   if (containers.length) {
