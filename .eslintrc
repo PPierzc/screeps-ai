@@ -11,6 +11,7 @@
     "FIND_DROPPED_RESOURCES": "writable",
     "STRUCTURE_CONTAINER": "writable",
     "FIND_MY_CONSTRUCTION_SITES": "writable",
+    "FIND_STRUCTURES": "writable",
     "Game": "writable"
   }
 }
