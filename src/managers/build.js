@@ -1,6 +1,16 @@
 module.exports = () => {
-  const { rooms } = Game
+  const {
+    rooms,
+    constructionSites,
+    structures
+  } = Game
   const room = Object.values(rooms)[0]
 
-  room.createConstructionSite(25, 30, STRUCTURE_CONTAINER)
+  const containersUnderConstruction = Object.values(constructionSites).filter(constructionSite => constructionSite.structureType === STRUCTURE_CONTAINER)
+  const containers = Object.values(structures).filter(structure => structure.structureType === STRUCTURE_CONTAINER)
+
+  if (!containersUnderConstruction && !containers) {
+    const res = room.createConstructionSite(25, 30, STRUCTURE_CONTAINER)
+    console.log(res)
+  }
 }
