@@ -1,7 +1,7 @@
 const SpawnQueue = require('../queues/spawn')
 
 const pickupJob = (creep) => {
-  const target = creep.room.find(FIND_DROPPED_ENERGY)
+  const target = creep.room.find(FIND_DROPPED_RESOURCES)
   console.log(target)
   const pickupRes = creep.pickup(target)
 

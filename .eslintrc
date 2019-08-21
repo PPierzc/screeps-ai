@@ -8,7 +8,7 @@
     "MOVE": "writable",
     "WORK": "writable",
     "CARRY": "writable",
-    "FIND_DROPPED_ENERGY": "writable",
+    "FIND_DROPPED_RESOURCES": "writable",
     "Game": "writable"
   }
 }
