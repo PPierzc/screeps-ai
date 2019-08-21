@@ -12,8 +12,11 @@ const pickupJob = (creep) => {
 }
 
 const transferJob = (creep) => {
-  const containers = creep.pos.findInRange(FIND_STRUCTURES, 20, { filter: { structureType: STRUCTURE_CONTAINER } })
-  console.log(containers)
+  const containers = creep.pos.findInRange(FIND_STRUCTURES, 20, {
+    filter: {
+      structureType: STRUCTURE_CONTAINER
+    }
+  })
 
   let target = Game.spawns.Spawn1
   if (containers.length) {

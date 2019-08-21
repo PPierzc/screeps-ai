@@ -33,11 +33,22 @@ const transferJob = (creep) => {
 }
 
 const withdrawJob = (creep) => {
-  const spawn = Game.spawns.Spawn1
-  const withdraw = creep.withdraw(spawn, RESOURCE_ENERGY)
+  let target = Game.spawns.Spawn1
+
+  const containers = creep.pos.findInRange(FIND_STRUCTURES, 20, {
+    filter: {
+      structureType: STRUCTURE_CONTAINER
+    }
+  })
+
+  if (target.energy < 50) {
+    target = containers[0]
+  }
+
+  const withdraw = creep.withdraw(target, RESOURCE_ENERGY)
 
   if (withdraw === ERR_NOT_IN_RANGE) {
-    creep.moveTo(spawn)
+    creep.moveTo(target)
   }
 }
 
