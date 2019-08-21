@@ -11,9 +11,13 @@ module.exports = () => {
   const structures = room.find(FIND_STRUCTURES)
   const containers = Object.values(structures).filter(structure => structure.structureType === STRUCTURE_CONTAINER)
 
-  console.log(containers)
+  const containersFilled = containers.filter(container => container.energy === container.energyCapacity)
 
   if (!containersUnderConstruction.length && !containers.length) {
-    room.createConstructionSite(spawn.pos.x, spawn.pos.y + 10, STRUCTURE_CONTAINER)
+    return room.createConstructionSite(spawn.pos.x, spawn.pos.y + 10, STRUCTURE_CONTAINER)
+  }
+
+  if (containers.length === containersFilled.length) {
+    return room.createConstructionSite(spawn.pos.x - containers.length, spawn.pos.y + 10, STRUCTURE_CONTAINER)
   }
 }
