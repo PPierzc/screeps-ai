@@ -24,8 +24,10 @@ module.exports = {
       const job = spawn.memory.queue.sort((a, b) => a - b)[0]
 
       if (job) {
-        spawn.createCreep(job.body, job.name, job.memory)
-        spawn.memory.processing = true
+        const res = spawn.createCreep(job.body, job.name, job.memory)
+        if (!res) {
+          spawn.memory.processing = true
+        }
       }
     }
   }
